@@ -1,5 +1,5 @@
-const walk = require("walk");
-const path = require("path");
+const walk = require('walk');
+const path = require('path');
 
 const fileNameSizeCount = {}; // {size: path}
 
@@ -13,15 +13,15 @@ const options = {
       });
     },
     file: function (root, fileStats, next) {
-      const name = fileStats.name;
-      const size = fileStats.size;
+      const { name } = fileStats;
+      const { size } = fileStats;
       const p = path.join(__dirname, root.slice(2), name);
 
       if (size in fileNameSizeCount) {
-        console.log("Duplicate files found:");
+        console.log('Potential duplicate file found');
         console.log(p);
         console.log(fileNameSizeCount[size]);
-        console.log("\n");
+        // console.log('\n');
       } else {
         fileNameSizeCount[size] = p;
       }
@@ -31,5 +31,6 @@ const options = {
   },
 };
 
-walk.walkSync("./", options);
-console.log("all done");
+walk.walkSync('./', options);
+
+console.log('all done');

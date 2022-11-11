@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "walk": "^2.3.14"
+    "walk": "^2.3.15"
   }
 }
